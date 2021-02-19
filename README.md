@@ -5,6 +5,7 @@ The map generator inspired by [Slay the Spire](https://store.steampowered.com/ap
 ![](https://user-images.githubusercontent.com/59264002/75630736-89e6a080-5c30-11ea-86ed-3f00e3631e48.gif)
 
 ## Theory
+text
 
 1. Set the start point and the end point.
 2. Prepare points with Poisson disk sampling.
