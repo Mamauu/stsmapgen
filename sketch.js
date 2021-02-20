@@ -6,7 +6,7 @@ let endPoint
 let graph = createGraph()
 
 function setup() {
-  canvasSize = min(350, windowWidth)
+  canvasSize = min(375, windowWidth)
   let canvas = createCanvas(canvasSize, canvasSize)
   canvas.parent("canvas")
   colorMode(HSB)
@@ -90,14 +90,13 @@ function draw() {
   }
 
 
-document.write(activePoints);
-
   // Points
   stroke(0)
   textSize(16)
   textAlign(CENTER, CENTER)
   for (const p of new Set(activePoints)) {
     const pJSON = JSON.stringify(p)
+    console.log(JSON.stringify(p))
     switch (pJSON) {
       case JSON.stringify(startPoint):
         text("😀", ...p)
@@ -106,7 +105,11 @@ document.write(activePoints);
         text("😈", ...p)
         break
       default:
-        text(random(Array.from("💀💀👽❓❓🔥")), ...p)
+        text(random(Array.from("💀💀💀👽❓❓❓🔥")), ...p)
+	// if (pJSON < 2) {
+	// console.log(pJSON)
+	// text("🔥", ...p)
+	// }
     }
   }
   pop()
@@ -131,6 +134,7 @@ function arrow(x1, y1, x2, y2, arrowSize = 6) {
   pop()
 }
 
+
 function dottedLine(x1, y1, x2, y2, fragment = 5) {
   let vec = createVector(x2 - x1, y2 - y1)
   const len = vec.mag()
@@ -148,3 +152,6 @@ function dottedLine(x1, y1, x2, y2, fragment = 5) {
   }
   pop()
 }
+
+
+
