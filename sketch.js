@@ -6,7 +6,7 @@ let endPoint
 let graph = createGraph()
 
 function setup() {
-  canvasSize = min(500, windowWidth)
+  canvasSize = min(350, windowWidth)
   let canvas = createCanvas(canvasSize, canvasSize)
   canvas.parent("canvas")
   colorMode(HSB)
@@ -20,12 +20,13 @@ function setup() {
     tries: 20
   }, random)
   startPoint = [canvasSize * 0.45, canvasSize * 0.9]
-  endPoint = [canvasSize * 0.45, 0]
+  endPoint = [canvasSize * 0.45, canvasSize * 0]
   pdsObj.addPoint(startPoint)
   pdsObj.addPoint(endPoint)
   let points = pdsObj.fill().filter(p => {
     return dist(...p, canvasSize * 0.45, canvasSize * 0.45) <= canvasSize * 0.45
   })
+
 
   // Delaunay
   let delaunay = Delaunator.from(points).triangles
@@ -49,6 +50,7 @@ function setup() {
     })
   }
 }
+
 
 function draw() {
   noStroke()
@@ -87,6 +89,9 @@ function draw() {
     graph.removeNode(foundPath[idx].id)
   }
 
+
+document.write(activePoints);
+
   // Points
   stroke(0)
   textSize(16)
@@ -101,7 +106,7 @@ function draw() {
         text("😈", ...p)
         break
       default:
-        text(random(Array.from("💀💀💀💰❓")), ...p)
+        text(random(Array.from("💀💀👽❓❓🔥")), ...p)
     }
   }
   pop()
@@ -110,6 +115,8 @@ function draw() {
   fill(40, 50, 60, 0.3)
   rect(0, 0, canvasSize, canvasSize)
 }
+
+
 
 function arrow(x1, y1, x2, y2, arrowSize = 6) {
   let vec = createVector(x2 - x1, y2 - y1)
